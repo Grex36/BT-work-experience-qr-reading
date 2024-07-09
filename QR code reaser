@@ -1,0 +1,11 @@
+import subprocess
+import time
+command = ['ssh', 'pi@192.168.10.2']
+p = subprocess.Popen(command, stdout=subprocess.PIPE)
+time.sleep(20)
+
+command = ['screen', '/dev/serial0', '9600', 'timeout=1']
+p = subprocess.Popen(command, stdout=subprocess.PIPE)
+text = p.stdout.read()
+retcode = p.wait()
+print(text)
